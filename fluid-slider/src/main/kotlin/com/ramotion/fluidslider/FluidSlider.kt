@@ -624,4 +624,8 @@ class FluidSlider @JvmOverloads constructor(
         drawRect2 = true
     }
 
+    fun setTextFont(typeFace: Typeface) {
+        paintText.typeface = typeFace;
+    }
+
 }
