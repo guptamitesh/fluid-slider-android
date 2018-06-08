@@ -304,6 +304,7 @@ class FluidSlider @JvmOverloads constructor(
 
                 position = max(0f, min(1f, a.getFloat(R.styleable.FluidSlider_initial_position, INITIAL_POSITION)))
                 textSize = a.getDimension(R.styleable.FluidSlider_text_size, TEXT_SIZE * density)
+                barCornerRadius = a.getDimension(R.styleable.FluidSlider_bar_corner_radius, BAR_CORNER_RADIUS * density)
                 duration = abs(a.getInteger(R.styleable.FluidSlider_duration, ANIMATION_DURATION)).toLong()
 
                 a.getString(R.styleable.FluidSlider_start_text)?.also { startText = it }
@@ -319,6 +320,7 @@ class FluidSlider @JvmOverloads constructor(
             colorBubble = COLOR_LABEL
             textSize = TEXT_SIZE * density
             barHeight = size.value * density
+            barCornerRadius = BAR_CORNER_RADIUS * density
         }
 
         desiredWidth = (barHeight * SLIDER_WIDTH).toInt()
@@ -333,7 +335,7 @@ class FluidSlider @JvmOverloads constructor(
         metaballRiseDistance = barHeight * METABALL_RISE_DISTANCE
 
         barVerticalOffset = barHeight * BAR_VERTICAL_OFFSET
-        barCornerRadius = BAR_CORNER_RADIUS * density
+
         barInnerOffset = BAR_INNER_HORIZONTAL_OFFSET * density
         textOffset = TEXT_OFFSET * density
     }

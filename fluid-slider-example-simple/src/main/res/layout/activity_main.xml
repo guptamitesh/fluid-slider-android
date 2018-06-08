@@ -19,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:size="small"
+        app:bar_corner_radius="12dp"
         app:duration="@android:integer/config_mediumAnimTime"
         tools:targetApi="lollipop" />
 
