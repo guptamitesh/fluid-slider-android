@@ -408,12 +408,13 @@ class FluidSlider @JvmOverloads constructor(
         // Draw slider bar and text
         canvas.drawRoundRect(rectBar, barCornerRadius, barCornerRadius, paintBar)
 
-        startText?.let { drawText(canvas, paintText, it, Paint.Align.LEFT, colorBarText, textOffset, rectBar, rectText) }
-        endText?.let { drawText(canvas, paintText, it, Paint.Align.RIGHT, colorBarText, textOffset, rectBar, rectText) }
-
         // Draw metaball
         val x = barInnerOffset + touchRectDiameter / 2 + maxMovement * position
         offsetRectToPosition(x, rectTouch, rectTopCircle, rectBottomCircle, rectLabel)
+
+        startText?.let { drawText(canvas, paintText, it, Paint.Align.LEFT, colorBarText, textOffset, rectBar, rectText) }
+        endText?.let { drawText(canvas, paintText, it, Paint.Align.RIGHT, colorBarText, textOffset, rectBar, rectText) }
+
         offsetRectToPosition(x, rectTouch, rectTopCircle, rectBottomCircle, rectLabel2)
 
         drawMetaball(canvas, paintBar, pathMetaball, rectBottomCircle, rectTopCircle, rectBar.top)
