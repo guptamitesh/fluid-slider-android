@@ -12,6 +12,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.view.animation.OvershootInterpolator
+import com.ramotion.fluidslider.FluidSlider.Size.NORMAL
+import com.ramotion.fluidslider.FluidSlider.Size.SMALL
 import kotlin.math.*
 
 
@@ -27,6 +29,11 @@ class FluidSlider @JvmOverloads constructor(
      * @see SMALL
      */
     enum class Size(val value: Int) {
+        /**
+         * Large size - 72dp.
+         */
+        LARGE(72),
+
         /**
          * Default size - 56dp.
          */
