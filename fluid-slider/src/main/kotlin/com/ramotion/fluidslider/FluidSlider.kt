@@ -166,6 +166,12 @@ class FluidSlider @JvmOverloads constructor(
             paintText.textSize = value
         }
 
+    var textFont: Typeface
+        get() = paintText.typeface
+        set(value) {
+            paintText.typeface = value
+        }
+
     /**
      * Bubble text.
      */
@@ -622,10 +628,6 @@ class FluidSlider @JvmOverloads constructor(
         animation.duration = duration
         animation.start()
         drawRect2 = true
-    }
-
-    fun setTextFont(typeFace: Typeface) {
-        paintText.typeface = typeFace;
     }
 
 }
