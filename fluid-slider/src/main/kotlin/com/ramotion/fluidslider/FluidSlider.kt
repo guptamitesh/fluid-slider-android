@@ -57,6 +57,7 @@ class FluidSlider @JvmOverloads constructor(
         const val BOTTOM_CIRCLE_DIAMETER = 25.0f
         const val TOUCH_CIRCLE_DIAMETER = 1
         const val LABEL_CIRCLE_DIAMETER = 10
+        const val LABEL_CIRCLE_DIAMETER2 = 14
 
         const val ANIMATION_DURATION = 400
         const val TOP_SPREAD_FACTOR = 0.4f
@@ -88,6 +89,7 @@ class FluidSlider @JvmOverloads constructor(
     private val bottomCircleDiameter: Float
     private val touchRectDiameter: Float
     private val labelRectDiameter: Float
+    private val labelRectDiameter2: Float
 
     private val metaballMaxDistance: Float
     private val metaballRiseDistance: Float
@@ -102,6 +104,7 @@ class FluidSlider @JvmOverloads constructor(
     private val rectBottomCircle = RectF()
     private val rectTouch = RectF()
     private val rectLabel = RectF()
+    private val rectLabel2 = RectF()
     private val rectText = Rect()
     private val pathMetaball = Path()
 
@@ -111,6 +114,8 @@ class FluidSlider @JvmOverloads constructor(
 
     private var maxMovement = 0f
     private var touchX: Float? = null
+
+    private var drawRect2: Boolean = true
 
     /**
      * Duration of "bubble" rise in milliseconds.
@@ -330,7 +335,7 @@ class FluidSlider @JvmOverloads constructor(
         bottomCircleDiameter = barHeight * BOTTOM_CIRCLE_DIAMETER
         touchRectDiameter = barHeight * TOUCH_CIRCLE_DIAMETER
         labelRectDiameter = barHeight - LABEL_CIRCLE_DIAMETER * density
-
+        labelRectDiameter2 = barHeight + LABEL_CIRCLE_DIAMETER2 * density
         metaballMaxDistance = barHeight * METABALL_MAX_DISTANCE
         metaballRiseDistance = barHeight * METABALL_RISE_DISTANCE
 
@@ -385,8 +390,9 @@ class FluidSlider @JvmOverloads constructor(
         rectTouch.set(0f, barVerticalOffset, touchRectDiameter, barVerticalOffset + touchRectDiameter)
 
         val vOffset = barVerticalOffset + (topCircleDiameter - labelRectDiameter) / 2f
+        val vOffset2 = barVerticalOffset + (topCircleDiameter - labelRectDiameter2) / 2f
         rectLabel.set(0f, vOffset, labelRectDiameter, vOffset + labelRectDiameter)
-
+        rectLabel2.set(0f, vOffset2, labelRectDiameter2, vOffset2 + labelRectDiameter2)
         maxMovement = width - touchRectDiameter - barInnerOffset * 2
     }
 
@@ -402,10 +408,12 @@ class FluidSlider @JvmOverloads constructor(
         // Draw metaball
         val x = barInnerOffset + touchRectDiameter / 2 + maxMovement * position
         offsetRectToPosition(x, rectTouch, rectTopCircle, rectBottomCircle, rectLabel)
+        offsetRectToPosition(x, rectTouch, rectTopCircle, rectBottomCircle, rectLabel2)
 
         drawMetaball(canvas, paintBar, pathMetaball, rectBottomCircle, rectTopCircle, rectBar.top)
 
         // Draw label and text
+        if(drawRect2) canvas.drawOval(rectLabel2, paintBar)
         canvas.drawOval(rectLabel, paintLabel)
 
         val text = bubbleText ?: (position * 100).toInt().toString()
@@ -599,6 +607,7 @@ class FluidSlider @JvmOverloads constructor(
         animation.duration = duration
         animation.interpolator = OvershootInterpolator()
         animation.start()
+        drawRect2 = false
     }
 
     private fun hideLabel() {
@@ -612,6 +621,7 @@ class FluidSlider @JvmOverloads constructor(
         }
         animation.duration = duration
         animation.start()
+        drawRect2 = true
     }
 
 }

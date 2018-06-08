@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     android:animateLayoutChanges="true"
     tools:context="com.ramotion.fluidslider.example.simple.MainActivity">
 
@@ -18,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:size="small"
         app:bar_corner_radius="12dp"
         app:duration="@android:integer/config_mediumAnimTime"
         tools:targetApi="lollipop" />
@@ -27,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:gravity="bottom"
