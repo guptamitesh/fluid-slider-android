@@ -184,6 +184,9 @@ class FluidSlider @JvmOverloads constructor(
             paintText.typeface = value
         }
 
+
+    var sliderEnable: Boolean = true
+
     /**
      * Bubble text.
      */
@@ -451,7 +454,7 @@ class FluidSlider @JvmOverloads constructor(
         MotionEvent.ACTION_DOWN -> {
             val x = event.x
             val y = event.y
-            if (rectBar.contains(x, y)) {
+            if (sliderEnable && rectBar.contains(x, y)) {
                 if (!rectTouch.contains(x, y)) {
                     position = max(0f, min(1f, (x - rectTouch.width() / 2) / maxMovement))
                 }
