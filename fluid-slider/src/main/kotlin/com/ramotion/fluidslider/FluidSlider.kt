@@ -74,7 +74,7 @@ class FluidSlider @JvmOverloads constructor(
         const val TEXT_START = "0"
         const val TEXT_END = "100"
 
-        const val COLOR_BAR = 0xffffd23e.toInt()
+        const val COLOR_BAR = 0xff6168e7.toInt()
         const val COLOR_LABEL = Color.WHITE
         const val COLOR_LABEL_TEXT = Color.BLACK
         const val COLOR_BAR_TEXT = Color.WHITE
