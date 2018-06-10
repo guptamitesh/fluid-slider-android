@@ -85,7 +85,8 @@ class FluidSlider @JvmOverloads constructor(
     private val barHeight: Float
 
     private val desiredWidth: Int
-    private val desiredHeight: Int
+    var desiredHeight: Int
+        private set
 
     private val topCircleDiameter: Float
     private val bottomCircleDiameter: Float
