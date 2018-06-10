@@ -17,6 +17,8 @@ import com.ramotion.fluidslider.FluidSlider.Size.SMALL
 import kotlin.math.*
 
 
+
+
 class FluidSlider @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
@@ -72,7 +74,7 @@ class FluidSlider @JvmOverloads constructor(
         const val TEXT_START = "0"
         const val TEXT_END = "100"
 
-        const val COLOR_BAR = 0xff6168e7.toInt()
+        const val COLOR_BAR = 0xffffd23e.toInt()
         const val COLOR_LABEL = Color.WHITE
         const val COLOR_LABEL_TEXT = Color.BLACK
         const val COLOR_BAR_TEXT = Color.WHITE
@@ -145,6 +147,16 @@ class FluidSlider @JvmOverloads constructor(
         get() = paintBar.color
         set(value) {
             paintBar.color = value
+        }
+
+    /**
+     * Color of slider.
+     */
+    @Suppress("MemberVisibilityCanBePrivate")
+    var gradientBar: Shader
+        get() = paintBar.shader
+        set(value) {
+            paintBar.shader = value
         }
 
     /**
@@ -349,6 +361,9 @@ class FluidSlider @JvmOverloads constructor(
 
         barInnerOffset = BAR_INNER_HORIZONTAL_OFFSET * density
         textOffset = TEXT_OFFSET * density
+
+        //paintBar.shader = LinearGradient(0f, 0f, 0f, (desiredHeight/3).toFloat(), 0xffffd23e.toInt(),0xffee4266.toInt(), Shader.TileMode.MIRROR);
+
     }
 
     /**
