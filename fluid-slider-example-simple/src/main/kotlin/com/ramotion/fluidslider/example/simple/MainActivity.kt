@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         slider.position = 0.3f
         slider.startText ="$min"
         slider.endText = "$max"
+        slider.gradientBar = null
 
         slider.beginTrackingListener = { textView.visibility = View.INVISIBLE }
         slider.endTrackingListener = { textView.visibility = View.VISIBLE }

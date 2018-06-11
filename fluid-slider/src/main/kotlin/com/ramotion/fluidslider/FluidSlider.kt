@@ -153,8 +153,7 @@ class FluidSlider @JvmOverloads constructor(
     /**
      * Color of slider.
      */
-    @Suppress("MemberVisibilityCanBePrivate")
-    var gradientBar: Shader
+    var gradientBar: Shader?
         get() = paintBar.shader
         set(value) {
             paintBar.shader = value
