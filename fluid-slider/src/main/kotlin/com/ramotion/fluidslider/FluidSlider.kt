@@ -32,14 +32,9 @@ class FluidSlider @JvmOverloads constructor(
      */
     enum class Size(val value: Int) {
         /**
-         * Large size - 72dp.
+         * Default size - 50dp.
          */
-        LARGE(72),
-
-        /**
-         * Default size - 56dp.
-         */
-        NORMAL(56),
+        NORMAL(50),
 
         /**
          * Small size - 40dp.
